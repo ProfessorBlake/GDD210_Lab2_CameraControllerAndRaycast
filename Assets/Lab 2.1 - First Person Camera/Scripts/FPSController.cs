@@ -18,5 +18,14 @@ public class FPSController : MonoBehaviour
 
 		float mouseInputX = Input.GetAxis("Mouse X") * MouseSensitivity * Time.deltaTime;
 		transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0f, mouseInputX));
+
+		if(Input.GetMouseButtonDown(0))
+		{
+			RaycastHit hit;
+			if(Physics.Raycast(CamTransform.position, CamTransform.forward, out hit))
+			{
+				Debug.Log(hit.collider.gameObject.name);
+			}
+		}
 	}
 }

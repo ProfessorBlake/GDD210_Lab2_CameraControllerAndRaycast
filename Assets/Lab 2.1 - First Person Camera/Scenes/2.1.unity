@@ -338,9 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f29b0fcd7287344c891e900d8285938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MouseXSensitivity: 1.5
-  MouseYSensitivity: 80
-  Rb: {fileID: 153892609}
+  MouseSensitivity: 100
   CamTransform: {fileID: 2097684688}
 --- !u!1 &298545048
 GameObject:
@@ -539,7 +537,7 @@ GameObject:
   - component: {fileID: 327396859}
   - component: {fileID: 327396858}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -631,7 +629,7 @@ GameObject:
   - component: {fileID: 780762746}
   - component: {fileID: 780762745}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
