@@ -38,7 +38,7 @@ public class AdvancedRaycasting : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast(CamTransform.position, CamTransform.forward, out hit))
 		{
-			Debug.DrawLine(CamTransform.position, hit.point, Color.cyan, 1f);
+			Debug.DrawLine(CamTransform.position, hit.point, Color.cyan, 5f);
 			Debug.Log("Simple Raycast: " + hit.collider.gameObject.name);
 		}
 		
@@ -53,7 +53,7 @@ public class AdvancedRaycasting : MonoBehaviour
 		{
 			for (int i = 0; i < hits.Length; i++)
 			{
-				Debug.DrawLine(CamTransform.position, hits[i].point, Color.cyan, 2f);
+				Debug.DrawLine(CamTransform.position, hits[i].point, Color.cyan, 5f);
 				Debug.Log("Raycast All hit " + i + ": " + hits[i].collider.gameObject.name);
 			}
 		}
@@ -64,13 +64,17 @@ public class AdvancedRaycasting : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast(CamTransform.position, CamTransform.forward, out hit))
 		{
-			Debug.DrawLine(CamTransform.position, hit.point, Color.cyan, 1f);
+			Debug.DrawLine(CamTransform.position, hit.point, Color.cyan, 5f);
 
 			HealthOrb hitOrb = hit.collider.gameObject.GetComponent<HealthOrb>();
 			if(hitOrb != null)
 			{
 				Debug.Log("Hit a health orb! Has " + hitOrb.HealingValue + " healing.");
 				hitOrb.OnUse();
+			}
+			else
+			{
+				Debug.Log("Hit a non-health orb.");
 			}
 		}
 	}
