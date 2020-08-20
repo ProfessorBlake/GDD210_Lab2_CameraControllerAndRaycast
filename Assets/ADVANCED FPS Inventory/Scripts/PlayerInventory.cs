@@ -17,12 +17,9 @@ public class PlayerInventory : MonoBehaviour
 
 	public float MoveSpeed;
 	public float Gravity = -9.8f;
-	public LayerMask GroundLayer;
 	public float JumpSpeed;
-	public float GroundCheckDist;
 
 	public float verticalSpeed;
-	public bool onGround;
 
 	private void Start()
 	{
@@ -59,20 +56,13 @@ public class PlayerInventory : MonoBehaviour
 		movement += (transform.forward * forwardMovement) + (transform.right * sideMovement);
 
 		// Y movement
-		if (onGround && Input.GetKeyDown(KeyCode.Space))
+		if (CC.isGrounded && Input.GetKeyDown(KeyCode.Space))
 		{
 			verticalSpeed = JumpSpeed;
 		}
-
-		if (verticalSpeed <= 0 && Physics.CheckSphere(transform.position - (transform.up * GroundCheckDist), 0.5f, GroundLayer.value))
+		else if(CC.isGrounded)
 		{
-			verticalSpeed = 0;
-			transform.position -= Vector3.up * GroundCheckDist * 4f;
-			onGround = true;
-		}
-		else
-		{
-			onGround = false;
+			verticalSpeed = 0f;
 		}
 
 		verticalSpeed += (Gravity * Time.deltaTime);
@@ -84,11 +74,6 @@ public class PlayerInventory : MonoBehaviour
 	public void Launch(float force)
 	{
 		verticalSpeed = force;
-		onGround = false;
-	}
-
-	private void OnDrawGizmos()
-	{
-		Gizmos.DrawWireSphere(transform.position - (transform.up * GroundCheckDist), 0.5f);
+		CC.Move(Vector3.up*0.1f);
 	}
 }

@@ -11,42 +11,29 @@ public class FPSMovement : MonoBehaviour
 	public float JumpSpeed;
 
 	public float verticalSpeed;
-	public bool onGround;
 
 	private void Update()
 	{
-		Vector3 movement = new Vector3();
+		Vector3 movement = Vector3.zero;
 
 		// X/Z movement
 		float forwardMovement = Input.GetAxis("Vertical") * MoveSpeed * Time.deltaTime;
 		float sideMovement = Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime;
 
-		movement += (transform.forward * forwardMovement) + (transform.right * sideMovement);
-
-		// Y movement
-		if(onGround && Input.GetKeyDown(KeyCode.Space))
-		{
-			verticalSpeed = JumpSpeed;
-		}
-
-		if(verticalSpeed <= 0 && Physics.CheckSphere(transform.position - (transform.up * 0.6f), 0.5f, GroundLayer.value))
+		if (CC.isGrounded)
 		{
 			verticalSpeed = 0f;
-			onGround = true;
+			if(Input.GetKeyDown(KeyCode.Space))
+			{
+				verticalSpeed = JumpSpeed;
+			}
 		}
-		else
-		{
-			onGround = false;
-		}
+
+		movement += (transform.forward * forwardMovement) + (transform.right * sideMovement);
 
 		verticalSpeed += (Gravity * Time.deltaTime);
 		movement += (transform.up * verticalSpeed * Time.deltaTime);
 
 		CC.Move(movement);
-	}
-
-	private void OnDrawGizmos()
-	{
-		Gizmos.DrawWireSphere(transform.position - (transform.up * 0.6f), 0.5f);
 	}
 }

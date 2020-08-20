@@ -318,13 +318,8 @@ MonoBehaviour:
   JumpPadCountText: {fileID: 1721382240}
   MoveSpeed: 5
   Gravity: -19.6
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 1
   JumpSpeed: 9
-  GroundCheckDist: 0.6
   verticalSpeed: 0
-  onGround: 0
 --- !u!1 &298545048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,14 +1421,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 295628958, guid: 023358aa8a14a5c409a2ed74e56311d5, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 295628961, guid: 023358aa8a14a5c409a2ed74e56311d5, type: 3}
-      propertyPath: m_Size.y
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 023358aa8a14a5c409a2ed74e56311d5, type: 3}
