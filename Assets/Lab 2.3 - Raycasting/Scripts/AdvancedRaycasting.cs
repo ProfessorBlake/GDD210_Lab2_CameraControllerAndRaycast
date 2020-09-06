@@ -9,6 +9,11 @@ public class AdvancedRaycasting : MonoBehaviour
 
 	private float camRotation = 0f;
 
+	private void Start()
+	{
+		Cursor.lockState = CursorLockMode.Locked;
+	}
+
 	private void Update()
 	{
 		float mouseInputY = Input.GetAxis("Mouse Y") * MouseSensitivity * Time.deltaTime;
@@ -38,7 +43,7 @@ public class AdvancedRaycasting : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast(CamTransform.position, CamTransform.forward, out hit))
 		{
-			Debug.DrawLine(CamTransform.position, hit.point, Color.cyan, 5f);
+			Debug.DrawLine(CamTransform.position + new Vector3(0f, -1f, 0f), hit.point, Color.green, 5f);
 			Debug.Log("Simple Raycast: " + hit.collider.gameObject.name);
 		}
 		
@@ -46,14 +51,13 @@ public class AdvancedRaycasting : MonoBehaviour
 
 	private void RaycastAll()
 	{
-		RaycastHit[] hits;
-		hits = Physics.RaycastAll(CamTransform.position, CamTransform.forward);
+		RaycastHit[] hits = Physics.RaycastAll(CamTransform.position, CamTransform.forward);
 
 		if (hits.Length > 0)
 		{
 			for (int i = 0; i < hits.Length; i++)
 			{
-				Debug.DrawLine(CamTransform.position, hits[i].point, Color.cyan, 5f);
+				Debug.DrawLine(CamTransform.position + new Vector3(0f, -1f, 0f), hits[i].point, Color.green, 5f);
 				Debug.Log("Raycast All hit " + i + ": " + hits[i].collider.gameObject.name);
 			}
 		}
@@ -64,7 +68,7 @@ public class AdvancedRaycasting : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast(CamTransform.position, CamTransform.forward, out hit))
 		{
-			Debug.DrawLine(CamTransform.position, hit.point, Color.cyan, 5f);
+			Debug.DrawLine(CamTransform.position + new Vector3(0f, -1f, 0f), hit.point, Color.green, 5f);
 
 			HealthOrb hitOrb = hit.collider.gameObject.GetComponent<HealthOrb>();
 			if(hitOrb != null)

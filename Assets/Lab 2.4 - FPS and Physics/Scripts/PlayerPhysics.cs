@@ -44,7 +44,7 @@ public class PlayerPhysics : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast(CamTransform.position, CamTransform.forward, out hit))
 		{
-			Debug.DrawLine(CamTransform.position, hit.point, Color.cyan);
+			Debug.DrawLine(CamTransform.position + new Vector3(0f, -1f, 0f), hit.point, Color.cyan);
 			
 			Rigidbody hitRB = hit.collider.GetComponent<Rigidbody>();
 			if(hitRB != null)

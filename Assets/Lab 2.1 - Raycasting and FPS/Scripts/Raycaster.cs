@@ -8,7 +8,7 @@ public class Raycaster : MonoBehaviour
 
 	private void Start()
 	{
-		speed = Random.Range(0.1f, 1f);
+		speed = Random.Range(0.2f, 0.9f);
 	}
 
 	private void Update()
@@ -21,7 +21,9 @@ public class Raycaster : MonoBehaviour
 			Debug.DrawLine(transform.position, hit.point, Color.green);
 		}
 		else
-			Debug.DrawLine(transform.position,transform.position +  transform.forward * 100f, Color.red);
+		{
+			Debug.DrawLine(transform.position, transform.position + transform.forward * 100f, Color.red);
+		}
 	}
 }
 

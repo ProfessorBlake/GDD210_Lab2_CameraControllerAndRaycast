@@ -7,7 +7,6 @@ public class FPSMovement : MonoBehaviour
 	public CharacterController CC;
 	public float MoveSpeed;
 	public float Gravity = -9.8f;
-	public LayerMask GroundLayer;
 	public float JumpSpeed;
 
 	public float verticalSpeed;
@@ -20,6 +19,8 @@ public class FPSMovement : MonoBehaviour
 		float forwardMovement = Input.GetAxis("Vertical") * MoveSpeed * Time.deltaTime;
 		float sideMovement = Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime;
 
+		movement += (transform.forward * forwardMovement) + (transform.right * sideMovement);
+
 		if (CC.isGrounded)
 		{
 			verticalSpeed = 0f;
@@ -28,9 +29,7 @@ public class FPSMovement : MonoBehaviour
 				verticalSpeed = JumpSpeed;
 			}
 		}
-
-		movement += (transform.forward * forwardMovement) + (transform.right * sideMovement);
-
+		
 		verticalSpeed += (Gravity * Time.deltaTime);
 		movement += (transform.up * verticalSpeed * Time.deltaTime);
 
